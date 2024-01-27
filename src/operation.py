@@ -21,7 +21,7 @@ class Operation:
         return result
 
     @staticmethod
-    def mask_number(value: str) -> str:
+    def __mask_number(value: str) -> str:
         """Маскирует номер карты или счета"""
         if value.startswith("Счет"):
             return f"Счет **{value[-4:]}"
@@ -29,7 +29,7 @@ class Operation:
 
     def prepare_mask_number(self) -> None:
         """Выбор атрибута для маскировки"""
-        self.from_ = self.mask_number(self.from_) if self.from_ else ""
-        self.to = self.mask_number(self.to) if self.to else ""
+        self.from_ = self.__mask_number(self.from_) if self.from_ else ""
+        self.to = self.__mask_number(self.to) if self.to else ""
 
 
